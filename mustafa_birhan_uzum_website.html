@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dr. Mustafa Birhan Üzüm – Diş Hekimi</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  :root{
+    --green-dark:#1a4d2e;--green-mid:#2d7a4f;--green-light:#4caf80;
+    --green-pale:#e8f5ee;--green-xpale:#f3fbf6;--cream:#fafaf7;
+    --text-dark:#1a2e22;--text-mid:#3d5a47;--text-muted:#6b8a73;
+    --border:#c8e0d0;--white:#ffffff;--radius:12px;
+  }
+  body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--text-dark);line-height:1.6}
+  nav{background:var(--white);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100;padding:0 2rem}
+  .nav-inner{max-width:1100px;margin:auto;display:flex;align-items:center;justify-content:space-between;height:64px}
+  .logo{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--green-dark)}
+  .logo span{display:block;font-family:'DM Sans',sans-serif;font-size:11px;font-weight:400;color:var(--text-muted);letter-spacing:.05em;text-transform:uppercase}
+  .nav-links{display:flex;gap:2rem;list-style:none;align-items:center}
+  .nav-links a{text-decoration:none;font-size:14px;font-weight:500;color:var(--text-mid);transition:color .2s}
+  .nav-links a:hover{color:var(--green-mid)}
+  .nav-cta{background:var(--green-mid);color:var(--white)!important;padding:8px 20px;border-radius:50px;font-size:13px!important;transition:background .2s!important}
+  .nav-cta:hover{background:var(--green-dark)!important;color:var(--white)!important}
+  section{scroll-margin-top:64px}
+
+  /* HERO */
+  .hero{background:linear-gradient(135deg,var(--green-dark) 0%,var(--green-mid) 100%);color:var(--white);padding:5rem 2rem 4rem;text-align:center;position:relative;overflow:hidden}
+  .hero::before{content:'';position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1588776814546-1ffbb7d30e3d?w=1400&q=60') center/cover;opacity:.12}
+  .hero-inner{position:relative;z-index:1}
+  .hero-badge{display:inline-block;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);padding:6px 18px;border-radius:50px;font-size:12px;letter-spacing:.08em;text-transform:uppercase;margin-bottom:1.5rem}
+  .hero h1{font-family:'Playfair Display',serif;font-size:clamp(2rem,5vw,3.2rem);font-weight:600;line-height:1.2;margin-bottom:.5rem}
+  .hero-sub{font-size:1rem;opacity:.85;margin-bottom:2rem;font-weight:300}
+  .hero-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+  .btn-white{background:var(--white);color:var(--green-dark);border:none;padding:12px 28px;border-radius:50px;font-size:14px;font-weight:500;cursor:pointer;font-family:'DM Sans',sans-serif;transition:transform .15s,box-shadow .15s}
+  .btn-white:hover{transform:translateY(-1px);box-shadow:0 6px 20px rgba(0,0,0,.15)}
+  .btn-outline{background:transparent;color:var(--white);border:1px solid rgba(255,255,255,.5);padding:12px 28px;border-radius:50px;font-size:14px;font-weight:500;cursor:pointer;font-family:'DM Sans',sans-serif;transition:background .2s}
+  .btn-outline:hover{background:rgba(255,255,255,.1)}
+  .hero-stats{display:flex;gap:3rem;justify-content:center;margin-top:3rem;flex-wrap:wrap}
+  .stat{text-align:center}
+  .stat-num{font-family:'Playfair Display',serif;font-size:2rem;font-weight:600}
+  .stat-label{font-size:12px;opacity:.7;text-transform:uppercase;letter-spacing:.05em}
+
+  .container{max-width:1100px;margin:auto;padding:0 2rem}
+  .section-title{font-family:'Playfair Display',serif;font-size:clamp(1.6rem,3vw,2.2rem);font-weight:600;color:var(--green-dark);margin-bottom:.4rem}
+  .section-sub{color:var(--text-muted);font-size:.95rem;margin-bottom:2.5rem}
+
+  /* SERVICES */
+  #hizmetler{padding:5rem 2rem}
+  .services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.25rem}
+  .service-card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:1.5rem;transition:transform .2s,box-shadow .2s;cursor:default}
+  .service-card:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(29,120,80,.1)}
+  .service-icon{width:44px;height:44px;background:var(--green-pale);border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:1rem;font-size:22px}
+  .service-card h3{font-size:.95rem;font-weight:500;color:var(--text-dark);margin-bottom:.3rem}
+  .service-card p{font-size:.82rem;color:var(--text-muted);line-height:1.5}
+
+  /* SERVICE PHOTOS STRIP */
+  .photos-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:2.5rem}
+  .strip-photo{border-radius:var(--radius);overflow:hidden;height:180px;position:relative}
+  .strip-photo img{width:100%;height:100%;object-fit:cover;transition:transform .4s}
+  .strip-photo:hover img{transform:scale(1.05)}
+  .strip-caption{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(26,77,46,.8));color:#fff;padding:.6rem 1rem;font-size:.78rem;font-weight:500}
+
+  /* ABOUT */
+  #hakkimda{background:var(--green-xpale);padding:5rem 2rem}
+  .about-grid{display:grid;grid-template-columns:1fr 2fr;gap:3rem;align-items:start}
+  .about-photo-wrap{display:flex;flex-direction:column;gap:1rem}
+  .about-photo{border-radius:16px;border:3px solid var(--border);overflow:hidden;aspect-ratio:3/4;background:var(--green-pale)}
+  .about-photo img{width:100%;height:100%;object-fit:cover}
+  .about-edu-card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:1rem 1.2rem}
+  .about-edu-card h4{font-size:.8rem;font-weight:600;color:var(--green-dark);text-transform:uppercase;letter-spacing:.05em;margin-bottom:.6rem}
+  .edu-item{display:flex;gap:.7rem;align-items:flex-start;margin-bottom:.5rem}
+  .edu-dot{width:8px;height:8px;border-radius:50%;background:var(--green-mid);margin-top:.45rem;flex-shrink:0}
+  .edu-text{font-size:.82rem;color:var(--text-mid);line-height:1.4}
+  .edu-text strong{color:var(--text-dark)}
+
+  /* STORY SECTION */
+  .story-banner{background:linear-gradient(135deg,var(--green-dark),#0f3320);border-radius:16px;padding:2.5rem;color:#fff;margin-top:0;position:relative;overflow:hidden}
+  .story-banner::before{content:'"';position:absolute;top:-10px;left:20px;font-size:120px;font-family:'Playfair Display',serif;opacity:.1;line-height:1}
+  .story-banner h3{font-family:'Playfair Display',serif;font-size:1.3rem;margin-bottom:1rem;color:#fff}
+  .story-banner p{font-size:.9rem;opacity:.88;line-height:1.7}
+  .story-highlight{display:flex;gap:1.5rem;margin-top:1.5rem;flex-wrap:wrap}
+  .s-badge{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);border-radius:50px;padding:6px 16px;font-size:.78rem;font-weight:500}
+
+  .about-text p{color:var(--text-mid);font-size:.95rem;margin-bottom:1rem}
+  .about-tags{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1.5rem}
+  .tag{background:var(--white);border:1px solid var(--border);padding:5px 14px;border-radius:50px;font-size:.78rem;color:var(--green-dark);font-weight:500}
+
+  /* GALLERY */
+  #galeri{padding:4rem 2rem;background:var(--white)}
+  .gallery-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:.75rem}
+  .gallery-item{border-radius:10px;overflow:hidden;cursor:pointer;position:relative}
+  .gallery-item img{width:100%;height:160px;object-fit:cover;transition:transform .3s}
+  .gallery-item:hover img{transform:scale(1.07)}
+  .gallery-item.tall{grid-row:span 2}
+  .gallery-item.tall img{height:335px}
+
+  /* APPOINTMENT */
+  #randevu{padding:5rem 2rem;background:var(--green-xpale)}
+  .appt-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start}
+  .appt-info{padding:2rem;background:var(--green-dark);border-radius:var(--radius);color:var(--white)}
+  .appt-info h3{font-family:'Playfair Display',serif;font-size:1.3rem;margin-bottom:1rem}
+  .info-row{display:flex;gap:12px;align-items:flex-start;margin-bottom:1rem;font-size:.88rem;opacity:.9}
+  .appt-form{display:flex;flex-direction:column;gap:1rem}
+  .form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+  .field{display:flex;flex-direction:column;gap:5px}
+  .field label{font-size:.8rem;font-weight:500;color:var(--text-muted);text-transform:uppercase;letter-spacing:.04em}
+  .field input,.field select,.field textarea{border:1px solid var(--border);border-radius:8px;padding:10px 14px;font-size:.9rem;font-family:'DM Sans',sans-serif;color:var(--text-dark);background:var(--white);outline:none;transition:border .2s}
+  .field input:focus,.field select:focus,.field textarea:focus{border-color:var(--green-mid);box-shadow:0 0 0 3px rgba(45,122,79,.1)}
+  .field textarea{resize:vertical;min-height:80px}
+  .submit-btn{background:var(--green-mid);color:var(--white);border:none;border-radius:50px;padding:13px;font-size:.95rem;font-weight:500;cursor:pointer;font-family:'DM Sans',sans-serif;transition:background .2s}
+  .submit-btn:hover{background:var(--green-dark)}
+  .success-msg{display:none;background:var(--green-pale);border:1px solid var(--border);border-radius:var(--radius);padding:1.25rem;text-align:center;color:var(--green-dark);font-size:.9rem}
+
+  /* CONTACT */
+  #iletisim{padding:5rem 2rem;background:var(--white)}
+  .contact-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.25rem}
+  .contact-card{background:var(--green-xpale);border:1px solid var(--border);border-radius:var(--radius);padding:1.5rem;text-align:center}
+  .contact-card .ci{width:48px;height:48px;background:var(--green-pale);border-radius:50%;margin:0 auto 1rem;display:flex;align-items:center;justify-content:center;font-size:20px}
+  .contact-card h4{font-weight:500;font-size:.9rem;color:var(--text-dark);margin-bottom:.3rem}
+  .contact-card p{font-size:.82rem;color:var(--text-muted)}
+  .map-box{background:var(--green-pale);border:1px solid var(--border);border-radius:var(--radius);height:240px;margin-top:2rem;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:.5rem;color:var(--text-muted);font-size:.9rem}
+
+  footer{background:var(--green-dark);color:rgba(255,255,255,.7);text-align:center;padding:2rem;font-size:.82rem}
+  footer strong{color:var(--white)}
+
+  /* WHATSAPP FLOATING BUTTON */
+  .wa-float{position:fixed;bottom:28px;right:28px;z-index:9999;display:flex;flex-direction:column;align-items:flex-end;gap:10px}
+  .wa-tooltip{background:#1a1a1a;color:#fff;font-size:12px;font-family:'DM Sans',sans-serif;padding:7px 14px;border-radius:50px;white-space:nowrap;opacity:0;transform:translateX(8px);transition:opacity .25s,transform .25s;pointer-events:none}
+  .wa-float:hover .wa-tooltip{opacity:1;transform:translateX(0)}
+  .wa-btn{width:56px;height:56px;border-radius:50%;background:#25D366;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(37,211,102,.45);transition:transform .2s,box-shadow .2s;text-decoration:none}
+  .wa-btn:hover{transform:scale(1.08);box-shadow:0 6px 24px rgba(37,211,102,.55)}
+  .wa-btn svg{width:30px;height:30px;fill:#fff}
+  .wa-pulse{position:absolute;top:0;right:0;width:56px;height:56px;border-radius:50%;background:rgba(37,211,102,.35);animation:wapulse 2s ease-out infinite;pointer-events:none}
+  @keyframes wapulse{0%{transform:scale(1);opacity:.7}100%{transform:scale(1.7);opacity:0}}
+
+  @media(max-width:700px){
+    .about-grid,.appt-grid{grid-template-columns:1fr}
+    .form-row{grid-template-columns:1fr}
+    .hero-stats{gap:2rem}
+    .nav-links{display:none}
+    .wa-float{bottom:20px;right:16px}
+    .gallery-grid{grid-template-columns:repeat(2,1fr)}
+    .gallery-item.tall img{height:160px}
+    .gallery-item.tall{grid-row:span 1}
+    .photos-strip{grid-template-columns:1fr}
+  }
+</style>
+</head>
+<body>
+
+<!-- WHATSAPP FLOATING BUTTON -->
+<div class="wa-float">
+  <div class="wa-tooltip">WhatsApp ile yazın 💬</div>
+  <div style="position:relative">
+    <div class="wa-pulse"></div>
+    <a class="wa-btn" href="https://wa.me/90XXXXXXXXXXX?text=Merhaba%20Dr.%20Mustafa%20Birhan%20Üzüm,%20randevu%20almak%20istiyorum." target="_blank" title="WhatsApp ile iletişime geç">
+      <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+        <path d="M16 2C8.268 2 2 8.268 2 16c0 2.47.67 4.784 1.836 6.77L2 30l7.43-1.812A13.93 13.93 0 0016 30c7.732 0 14-6.268 14-14S23.732 2 16 2zm0 25.4a11.36 11.36 0 01-5.8-1.587l-.416-.247-4.41 1.075 1.104-4.288-.27-.44A11.4 11.4 0 114.6 16c0-6.287 5.113-11.4 11.4-11.4S27.4 9.713 27.4 16 22.287 27.4 16 27.4zm6.22-8.535c-.34-.17-2.012-.99-2.324-1.104-.31-.113-.537-.17-.762.17-.226.34-.874 1.104-1.072 1.33-.197.228-.395.255-.733.085-.34-.17-1.433-.528-2.73-1.685-1.01-.9-1.692-2.012-1.89-2.352-.197-.34-.022-.523.149-.692.153-.152.34-.396.51-.594.17-.2.226-.34.34-.566.113-.228.057-.425-.028-.595-.085-.17-.762-1.836-1.044-2.515-.275-.66-.554-.57-.762-.58l-.65-.01a1.246 1.246 0 00-.904.425c-.31.34-1.185 1.16-1.185 2.826 0 1.666 1.213 3.277 1.382 3.504.17.226 2.386 3.644 5.782 5.11.808.35 1.44.558 1.931.715.81.258 1.548.222 2.131.135.65-.097 2.012-.823 2.296-1.618.284-.793.284-1.474.198-1.617-.085-.142-.31-.227-.65-.397z"/>
+      </svg>
+    </a>
+  </div>
+</div>
+
+<nav>
+  <div class="nav-inner">
+    <div class="logo">Dr. Mustafa Birhan Üzüm<span>Diş Hekimi</span></div>
+    <ul class="nav-links">
+      <li><a href="#hizmetler">Hizmetler</a></li>
+      <li><a href="#hakkimda">Hakkımda</a></li>
+      <li><a href="#galeri">Galeri</a></li>
+      <li><a href="#iletisim">İletişim</a></li>
+      <li><a href="#randevu" class="nav-cta">Randevu Al</a></li>
+    </ul>
+  </div>
+</nav>
+
+<section class="hero" id="anasayfa">
+  <div class="hero-inner">
+    <div class="hero-badge">Güler Yüzlü · Profesyonel · Güvenilir</div>
+    <h1>Sağlıklı Bir Gülüşe<br>Kavuşmanın Tam Zamanı</h1>
+    <p class="hero-sub">Modern diş hekimliği ile konforlu ve güvenli tedavi deneyimi</p>
+    <div class="hero-btns">
+      <button class="btn-white" onclick="document.getElementById('randevu').scrollIntoView({behavior:'smooth'})">Randevu Al</button>
+      <button class="btn-outline" onclick="document.getElementById('hizmetler').scrollIntoView({behavior:'smooth'})">Hizmetlerimiz</button>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><div class="stat-num">10+</div><div class="stat-label">Yıl Deneyim</div></div>
+      <div class="stat"><div class="stat-num">2500+</div><div class="stat-label">Mutlu Hasta</div></div>
+      <div class="stat"><div class="stat-num">15+</div><div class="stat-label">Hizmet</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="hizmetler">
+  <div class="container">
+    <div class="section-title">Hizmetlerimiz</div>
+    <p class="section-sub">Ağız ve diş sağlığınız için kapsamlı çözümler sunuyoruz</p>
+    <div class="services-grid">
+      <div class="service-card"><div class="service-icon">🦷</div><h3>Diş Dolgusu</h3><p>Çürük ve hasar görmüş dişlerin onarımı</p></div>
+      <div class="service-card"><div class="service-icon">✨</div><h3>Diş Beyazlatma</h3><p>Profesyonel beyazlatma ile parlak gülüşler</p></div>
+      <div class="service-card"><div class="service-icon">🔧</div><h3>Diş İmplantı</h3><p>Eksik dişler için kalıcı ve doğal çözümler</p></div>
+      <div class="service-card"><div class="service-icon">📐</div><h3>Ortodonti</h3><p>Braces ve şeffaf plak tedavileri</p></div>
+      <div class="service-card"><div class="service-icon">🛡️</div><h3>Diş Eti Tedavisi</h3><p>Periodontoloji ve diş eti hastalıkları</p></div>
+      <div class="service-card"><div class="service-icon">👶</div><h3>Çocuk Diş Hekimliği</h3><p>Çocuklar için özel ve eğlenceli tedavi</p></div>
+      <div class="service-card"><div class="service-icon">👑</div><h3>Porselen Kaplama</h3><p>Estetik veneer ve tam kuron uygulamaları</p></div>
+      <div class="service-card"><div class="service-icon">🔍</div><h3>Röntgen & Muayene</h3><p>Dijital röntgen ile kapsamlı kontrol</p></div>
+    </div>
+
+    <!-- Photo strip under services -->
+    <div class="photos-strip">
+      <div class="strip-photo">
+        <img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=600&q=75" alt="Modern diş kliniği" loading="lazy">
+        <div class="strip-caption">Modern Klinik Ortamı</div>
+      </div>
+      <div class="strip-photo">
+        <img src="https://images.unsplash.com/photo-1588776814546-1ffbb7d30e3d?w=600&q=75" alt="Diş muayenesi" loading="lazy">
+        <div class="strip-caption">Uzman Tedavi</div>
+      </div>
+      <div class="strip-photo">
+        <img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=600&q=75" alt="Hasta memnuniyeti" loading="lazy">
+        <div class="strip-caption">Hasta Memnuniyeti</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="hakkimda">
+  <div class="container">
+    <div class="about-grid">
+      <!-- Left: Photo + education card -->
+      <div class="about-photo-wrap">
+        <div class="about-photo">
+          <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=500&q=80" alt="Dr. Mustafa Birhan Üzüm" loading="lazy">
+        </div>
+        <div class="about-edu-card">
+          <h4>🎓 Eğitim</h4>
+          <div class="edu-item">
+            <div class="edu-dot"></div>
+            <div class="edu-text"><strong>Gaziantep Üniversitesi</strong><br>Diş Hekimliği Fakültesi (DDS)</div>
+          </div>
+          <div class="edu-item">
+            <div class="edu-dot"></div>
+            <div class="edu-text"><strong>İmplantoloji & Estetik</strong><br>İleri uzmanlık sertifikaları</div>
+          </div>
+          <div class="edu-item">
+            <div class="edu-dot"></div>
+            <div class="edu-text"><strong>10+ Yıl</strong><br>Klinik deneyim</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Story + tags -->
+      <div class="about-text">
+        <div class="section-title">Hakkımda</div>
+        <p class="section-sub">Hastaların gülümsemesine yardımcı olmak en büyük motivasyonum</p>
+
+        <p>Diş hekimliği alanında 10 yılı aşkın deneyimimle, her hastama bireysel ve özenli yaklaşım sunmayı ilke ediniyorum. Modern teknoloji ve kanıta dayalı tıp uygulamaları ile ağız sağlığınızı en üst düzeyde korumak için buradayım.</p>
+
+        <p>Her tedavi sürecinde hasta konforunu ve güvenini ön planda tutarak, kaygısız ve rahat bir klinik deneyimi hedefliyorum.</p>
+
+        <!-- Personal story banner -->
+        <div class="story-banner">
+          <h3>🌱 Bir Köyden Gelen Hekim</h3>
+          <p>
+            Küçük bir köyde büyüyen Mustafa Birhan, sınırlı imkânlara rağmen bilime olan tutkusu ve azmiyle Gaziantep Üniversitesi Diş Hekimliği Fakültesi'ni kazandı. Zorlu yılları boyunca hiçbir engel onu yıldıramadı; her zorluğu birer basamak olarak gördü. Bugün binlerce hastasının gülüşüne dokunan bu başarı hikâyesi, emek ve kararlılığın en güzel örneğidir.
+          </p>
+          <div class="story-highlight">
+            <span class="s-badge">🏡 Köyden şehre</span>
+            <span class="s-badge">🎓 Gaziantep Üniversitesi</span>
+            <span class="s-badge">💪 Azim & Çalışkanlık</span>
+            <span class="s-badge">😁 2500+ Mutlu Hasta</span>
+          </div>
+        </div>
+
+        <div class="about-tags" style="margin-top:1.5rem">
+          <span class="tag">Implantoloji</span>
+          <span class="tag">Estetik Diş Hekimliği</span>
+          <span class="tag">Ortodonti</span>
+          <span class="tag">Periodontoloji</span>
+          <span class="tag">Çocuk Diş Hekimliği</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY SECTION -->
+<section id="galeri">
+  <div class="container">
+    <div class="section-title">Galeri</div>
+    <p class="section-sub">Kliniğimizden ve tedavilerimizden kareler</p>
+    <div class="gallery-grid">
+      <div class="gallery-item tall">
+        <img src="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?w=500&q=75" alt="Klinik" loading="lazy">
+      </div>
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=400&q=75" alt="Diş tedavisi" loading="lazy">
+      </div>
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1588776814546-1ffbb7d30e3d?w=400&q=75" alt="Muayene" loading="lazy">
+      </div>
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=400&q=75" alt="Ekipman" loading="lazy">
+      </div>
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=400&q=75" alt="Hekim" loading="lazy">
+      </div>
+      <div class="gallery-item tall">
+        <img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=500&q=75" alt="Hasta memnuniyeti" loading="lazy">
+      </div>
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1598256989800-fe5f95da9787?w=400&q=75" alt="Gülüş" loading="lazy">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="randevu">
+  <div class="container">
+    <div class="section-title">Randevu Al</div>
+    <p class="section-sub">Size en uygun vakti seçin, biz de hazır olalım</p>
+    <div class="appt-grid">
+      <div class="appt-info">
+        <h3>Çalışma Saatleri</h3>
+        <div class="info-row"><span>📅</span><span><strong>Pazartesi – Cuma</strong><br>09:00 – 18:00</span></div>
+        <div class="info-row"><span>📅</span><span><strong>Cumartesi</strong><br>09:00 – 14:00</span></div>
+        <div class="info-row"><span>❌</span><span><strong>Pazar</strong><br>Kapalı</span></div>
+        <hr style="border:none;border-top:1px solid rgba(255,255,255,.2);margin:1.5rem 0">
+        <div class="info-row"><span>📞</span><span><strong>Telefon ile Randevu</strong><br>+90 (XXX) XXX XX XX</span></div>
+        <div class="info-row"><span>📍</span><span><strong>Adres</strong><br>Klinik adresiniz buraya eklenecek</span></div>
+        <hr style="border:none;border-top:1px solid rgba(255,255,255,.2);margin:1.5rem 0">
+        <a href="https://wa.me/90XXXXXXXXXXX?text=Merhaba%20Dr.%20Mustafa%20Birhan%20Üzüm,%20randevu%20almak%20istiyorum." target="_blank" style="display:flex;align-items:center;gap:10px;background:#25D366;color:#fff;text-decoration:none;padding:11px 18px;border-radius:50px;font-size:.88rem;font-weight:500;font-family:'DM Sans',sans-serif;width:fit-content;transition:background .2s" onmouseover="this.style.background='#1ebe5d'" onmouseout="this.style.background='#25D366'">
+          <svg width="18" height="18" viewBox="0 0 32 32" fill="white"><path d="M16 2C8.268 2 2 8.268 2 16c0 2.47.67 4.784 1.836 6.77L2 30l7.43-1.812A13.93 13.93 0 0016 30c7.732 0 14-6.268 14-14S23.732 2 16 2zm6.22 18.865c-.34-.17-2.012-.99-2.324-1.104-.31-.113-.537-.17-.762.17-.226.34-.874 1.104-1.072 1.33-.197.228-.395.255-.733.085-.34-.17-1.433-.528-2.73-1.685-1.01-.9-1.692-2.012-1.89-2.352-.197-.34-.022-.523.149-.692.153-.152.34-.396.51-.594.17-.2.226-.34.34-.566.113-.228.057-.425-.028-.595-.085-.17-.762-1.836-1.044-2.515-.275-.66-.554-.57-.762-.58l-.65-.01a1.246 1.246 0 00-.904.425c-.31.34-1.185 1.16-1.185 2.826 0 1.666 1.213 3.277 1.382 3.504.17.226 2.386 3.644 5.782 5.11.808.35 1.44.558 1.931.715.81.258 1.548.222 2.131.135.65-.097 2.012-.823 2.296-1.618.284-.793.284-1.474.198-1.617-.085-.142-.31-.227-.65-.397z"/></svg>
+          WhatsApp ile Randevu
+        </a>
+      </div>
+      <div>
+        <div id="success-msg" class="success-msg">✅ Randevu talebiniz alındı! En kısa sürede sizi arayacağız.</div>
+        <div class="appt-form" id="appt-form">
+          <div class="form-row">
+            <div class="field"><label>Ad</label><input type="text" placeholder="Adınız"></div>
+            <div class="field"><label>Soyad</label><input type="text" placeholder="Soyadınız"></div>
+          </div>
+          <div class="form-row">
+            <div class="field"><label>Telefon</label><input type="tel" placeholder="+90 5XX XXX XX XX"></div>
+            <div class="field"><label>E-posta</label><input type="email" placeholder="ornek@mail.com"></div>
+          </div>
+          <div class="form-row">
+            <div class="field"><label>Tarih</label><input type="date"></div>
+            <div class="field"><label>Saat</label>
+              <select>
+                <option value="">Saat seçin</option>
+                <option>09:00</option><option>09:30</option><option>10:00</option>
+                <option>10:30</option><option>11:00</option><option>11:30</option>
+                <option>13:00</option><option>13:30</option><option>14:00</option>
+                <option>14:30</option><option>15:00</option><option>15:30</option>
+                <option>16:00</option><option>16:30</option><option>17:00</option>
+              </select>
+            </div>
+          </div>
+          <div class="field"><label>Hizmet</label>
+            <select>
+              <option value="">Hizmet seçin</option>
+              <option>Genel Muayene</option><option>Diş Dolgusu</option>
+              <option>Diş Beyazlatma</option><option>Diş İmplantı</option>
+              <option>Ortodonti</option><option>Diş Eti Tedavisi</option>
+              <option>Çocuk Diş Hekimliği</option><option>Porselen Kaplama</option>
+              <option>Diğer</option>
+            </select>
+          </div>
+          <div class="field"><label>Notunuz (isteğe bağlı)</label><textarea placeholder="Şikayetiniz veya özel bir durumunuz varsa belirtebilirsiniz..."></textarea></div>
+          <button class="submit-btn" onclick="submitForm()">Randevu Talebini Gönder</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="iletisim">
+  <div class="container">
+    <div class="section-title">İletişim</div>
+    <p class="section-sub">Bize ulaşmak için birden fazla yol</p>
+    <div class="contact-cards">
+      <div class="contact-card"><div class="ci">📞</div><h4>Telefon</h4><p>+90 (XXX) XXX XX XX</p></div>
+      <div class="contact-card"><div class="ci">📧</div><h4>E-posta</h4><p>info@drhekimi.com</p></div>
+      <div class="contact-card"><div class="ci">📍</div><h4>Adres</h4><p>Klinik Adresiniz, Şehir</p></div>
+      <div class="contact-card" style="cursor:pointer" onclick="window.open('https://wa.me/90XXXXXXXXXXX?text=Merhaba%20Dr.%20Mustafa%20Birhan%20Üzüm,%20randevu%20almak%20istiyorum.','_blank')">
+        <div class="ci" style="background:#dcf8e8">💬</div>
+        <h4>WhatsApp</h4>
+        <p style="color:#25D366;font-weight:500">Hemen yazın →</p>
+      </div>
+    </div>
+    <div class="map-box">
+      <span style="font-size:32px">🗺️</span>
+      <span>Harita buraya eklenecek</span>
+      <span style="font-size:.78rem">(Google Maps iframe ile entegre edilecek)</span>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <strong>Dr. Mustafa Birhan Üzüm</strong> &nbsp;·&nbsp; Diş Hekimi &nbsp;·&nbsp; Gaziantep Üniversitesi Mezunu &nbsp;·&nbsp; © 2025 Tüm hakları saklıdır.
+</footer>
+
+<script>
+function submitForm(){
+  document.getElementById('appt-form').style.display='none';
+  document.getElementById('success-msg').style.display='block';
+}
+document.querySelector('input[type="date"]').setAttribute('min',new Date().toISOString().split('T')[0]);
+</script>
+</body>
+</html>
